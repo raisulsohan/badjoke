@@ -47,3 +47,25 @@ body{
     transition: all 300ms ease;
 }
 
+#prevJokeList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#prevJokeList li {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 16px;
+    font-size: 18px;
+    line-height: 1.4;
+    transition: background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#prevJokeList li:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transition: background-color 0.3s ease-in-out;
+}
+
