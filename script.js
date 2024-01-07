@@ -37,7 +37,6 @@ async function getJoke() {
 }
 
 function showPreviousJokes() {
-    // Display up to the last 10 previous jokes as a list if there are any
     const recentPreviousJokes = previousJokes.slice(0, 10);
 
     if (recentPreviousJokes.length > 0) {
@@ -50,7 +49,7 @@ function showPreviousJokes() {
             }
         });
     } else {
-        prevJokeListEl.innerHTML = "No previous jokes available.";
+        prevJokeListEl.innerHTML = '<div id="noPreviousJokesMessage">No previous jokes available.</div>';
     }
 }
 
