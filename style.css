@@ -1,4 +1,4 @@
-body{
+body {
     background: linear-gradient(to left bottom, lightblue, lightpink, lightblue);
     min-height: 100vh;
     display: flex;
@@ -7,28 +7,32 @@ body{
     margin: 0;
     font-family: monospace;
 }
+
 .container {
     background-color: rgba(255, 255, 255, .3);
     padding: 20px;
-    box-shadow: 0 6px 10px rgba(0,0,0,.3);border-radius: 15px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.3);
+    border-radius: 15px;
     width: 85%;
     text-align: center;
     color: darkgreen;
 }
-.heading{
+
+.heading {
     font-size: 35px;
     font-weight: 200;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-shadow: 5px 5px 2px rgba(0,0,0,.3);
     letter-spacing: 2px;
 }
-.joke{
+
+.joke {
     font-size: 25px;
     font-weight: 500;
     margin: 40px;
 }
 
-.btn{
+.btn {
     font-size: 18px;
     font-weight: 700;
     border-radius: 5px;
@@ -75,3 +79,84 @@ body{
     margin-top: 12px;
 }
 
+.review-btn {
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid transparent; 
+    transition: background-color 0.3s, color 0.3s, border 0.3s; 
+}
+
+.review-btn:hover {
+    background-color: blue; 
+    color: white;
+    border: none; 
+}
+
+.like-btn {
+    background-color: lightgreen;
+}
+
+.dislike-btn {
+    background-color: lightcoral;
+}
+
+.feedback-message {
+    display: none;
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.feedback-message span {
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.dislike-feedback {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.textarea-container, .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dislike-feedback textarea {
+    width: 50%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.submit-feedback-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.submit-feedback-btn:hover {
+    background-color: #517553;
+}
