@@ -24,14 +24,22 @@ async function getJoke() {
         const response = await fetch(apiURL, options);
         const data = await response.json();
         btnEl.disabled = false;
-        btnEl.innerText = "Tell me a joke again!"
-        previousJokes.unshift(currentJoke);
+        btnEl.innerText = "Tell me a joke again!";
+
+        if (currentJoke.trim() !== "") {
+            previousJokes.unshift(currentJoke);
+        }
+
         currentJoke = data[0].joke;
         jokeEl.innerText = currentJoke;
+
+        if (previousJokes.length > 0) {
+            previousJokesAvailable = true;
+        }
     } catch (error) {
         jokeEl.innerText = "An error happened, try again!";
         btnEl.disabled = false;
-        btnEl.innerText = "Tell me a joke again!"
+        btnEl.innerText = "Tell me a joke again!";
         console.log(error);
     }
 }
@@ -124,11 +132,12 @@ function createReviewButtons() {
     return reviewDiv;
 }
 
+let previousJokesAvailable = false;
 
 function showPreviousJokes() {
     const recentPreviousJokes = previousJokes.slice(0, 10);
 
-    if (recentPreviousJokes.length > 0) {
+    if (recentPreviousJokes.length > 0 || previousJokesAvailable) {
         prevJokeListEl.innerHTML = "";
         recentPreviousJokes.forEach((joke, index) => {
             if (joke.trim() !== "") {
@@ -139,8 +148,21 @@ function showPreviousJokes() {
                 prevJokeListEl.appendChild(listItem);
             }
         });
+        previousJokesAvailable = true;
     } else {
         prevJokeListEl.innerHTML = '<div id="noPreviousJokesMessage">No previous jokes available.</div>';
+        const noPreviousJokesMessage = document.getElementById("noPreviousJokesMessage");
+        if (noPreviousJokesMessage) {
+            noPreviousJokesMessage.style.opacity = "1";
+            setTimeout(() => {
+                noPreviousJokesMessage.style.opacity = "0";
+                setTimeout(() => {
+                    if (noPreviousJokesMessage.parentNode) {
+                        noPreviousJokesMessage.parentNode.removeChild(noPreviousJokesMessage);
+                    }
+                }, 500);
+            }, 1000);
+        }
     }
 }
 
