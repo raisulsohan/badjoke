@@ -2,6 +2,7 @@ const btnEl = document.getElementById("btn");
 const jokeEl = document.getElementById("joke");
 const prevJokeButtonEl = document.getElementById("prevJoke");
 const prevJokeListEl = document.getElementById("prevJokeList");
+const clearJokesButtonEl = document.getElementById("clearJokes");
 
 const apiKey = "j0ZbcTnuuZHJCIVSzkqGcQ==eRx7cIFS5S8Bb56j";
 
@@ -134,10 +135,21 @@ function createReviewButtons() {
 
 let previousJokesAvailable = false;
 
+function clearJokes() {
+    previousJokes = [];
+    previousJokesAvailable = false;
+    showPreviousJokes();
+}
+
+clearJokesButtonEl.addEventListener("click", clearJokes);
+
 function showPreviousJokes() {
     const recentPreviousJokes = previousJokes.slice(0, 5);
 
     if (recentPreviousJokes.length > 0 || previousJokesAvailable) {
+        
+        clearJokesButtonEl.style.display = "inline-block";
+
         prevJokeListEl.innerHTML = "";
         recentPreviousJokes.forEach((joke, index) => {
             if (joke.trim() !== "") {
@@ -150,6 +162,9 @@ function showPreviousJokes() {
         });
         previousJokesAvailable = true;
     } else {
+
+        clearJokesButtonEl.style.display = "none";
+
         prevJokeListEl.innerHTML = '<div id="noPreviousJokesMessage">No previous jokes available.</div>';
         const noPreviousJokesMessage = document.getElementById("noPreviousJokesMessage");
         if (noPreviousJokesMessage) {
