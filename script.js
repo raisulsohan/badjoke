@@ -135,7 +135,7 @@ function createReviewButtons() {
 let previousJokesAvailable = false;
 
 function showPreviousJokes() {
-    const recentPreviousJokes = previousJokes.slice(0, 10);
+    const recentPreviousJokes = previousJokes.slice(0, 5);
 
     if (recentPreviousJokes.length > 0 || previousJokesAvailable) {
         prevJokeListEl.innerHTML = "";
